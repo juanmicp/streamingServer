@@ -19,10 +19,23 @@ class Server():
         server.serve_forever()
         
 class Handler (BaseHTTPRequestHandler):
+    print('en manejador')
     def do_GET(self):
+        print('en GET')
         self.send_response(200)
         self.send_header('Content-type','text/html')
         self.end_headers()
         # Hacer lo que queramos con la petición
-        return
+    def do_PUT(self):
+        print('en PUT')
+        input = self.rfile.read()
+        print(input)
+    def do_POST(self):
+        print('en POST')
+        input = self.rfile.read()
+        print(input)
+        self.send_response(200)
+        self.send_header('Content-type','text/html')
+        self.end_headers()
+        
     
